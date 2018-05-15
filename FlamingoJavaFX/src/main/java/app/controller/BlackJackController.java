@@ -129,9 +129,6 @@ public class BlackJackController implements Initializable {
 
 		// Create a Rotate transition
 		RotateTransition rotT = CreateRotateTransition(img);
-		//Duration Duration = new Duration(1000);
-		//rotT.setDuration(Duration);
-		//rotT.setByAngle(360);
 
 		// Create a Scale transition (we're not using it, but this is how you do it)
 		ScaleTransition scaleT = CreateScaleTransition(img);
@@ -370,15 +367,15 @@ public class BlackJackController implements Initializable {
 
 		// TODO: Fix the Path transition. My Path looks terrible... do something cool :)
 
-		path.getElements().add(new MoveTo(fromPoint.getX(), fromPoint.getY()));
-		path.getElements().add(new CubicCurveTo(toPoint.getX() * 2, toPoint.getY() * 2, toPoint.getX() / 3,
-				toPoint.getY() / 3, toPoint.getX(), toPoint.getY()));
+		path.getElements().add(new MoveTo(fromPoint.getX()+32, fromPoint.getY()+48));
+		path.getElements().add(new CubicCurveTo(toPoint.getX()+32, toPoint.getY()+48, toPoint.getX()+32,
+				toPoint.getY()+48, toPoint.getX()+32, toPoint.getY()+48));
 		//path.getElements().add(new CubicCurveTo(0, 120, 0, 240, 380, 240));
 		PathTransition pathTransition = new PathTransition();
 		pathTransition.setDuration(Duration.millis(750));
 		pathTransition.setPath(path);
 		pathTransition.setNode(img);
-		pathTransition.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
+		pathTransition.setOrientation(PathTransition.OrientationType.NONE);
 		pathTransition.setCycleCount((int) 1f);
 		pathTransition.setAutoReverse(false);
 
@@ -398,10 +395,12 @@ public class BlackJackController implements Initializable {
 
 	private RotateTransition CreateRotateTransition(ImageView img) {
 
-		RotateTransition rotateTransition = new RotateTransition(Duration.millis(iAnimationLength / 2), img);
-		rotateTransition.setByAngle(180F);
-		rotateTransition.setCycleCount(2);
+		RotateTransition rotateTransition = new RotateTransition(Duration.millis(iAnimationLength), img);
+		rotateTransition.setByAngle(360F);
+		rotateTransition.setCycleCount(1);
 		rotateTransition.setAutoReverse(false);
+		Duration Duration = new Duration(750);
+		rotateTransition.setDuration(Duration);
 
 		return rotateTransition;
 	}
