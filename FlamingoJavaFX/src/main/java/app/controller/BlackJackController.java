@@ -368,8 +368,8 @@ public class BlackJackController implements Initializable {
 		// TODO: Fix the Path transition. My Path looks terrible... do something cool :)
 
 		path.getElements().add(new MoveTo(fromPoint.getX()+32, fromPoint.getY()+48));
-		path.getElements().add(new CubicCurveTo(toPoint.getX()+32, toPoint.getY()+48, toPoint.getX()+32,
-				toPoint.getY()+48, toPoint.getX()+32, toPoint.getY()+48));
+		path.getElements().add(new CubicCurveTo((toPoint.getX()+32)*.6, (toPoint.getY()+48)*.6, (toPoint.getX()+32)*.8,
+				(toPoint.getY()+48)*.8, toPoint.getX()+32, toPoint.getY()+48));
 		//path.getElements().add(new CubicCurveTo(0, 120, 0, 240, 380, 240));
 		PathTransition pathTransition = new PathTransition();
 		pathTransition.setDuration(Duration.millis(750));
